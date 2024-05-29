@@ -1,0 +1,58 @@
+#home {
+    display: flex;
+    flex-direction: row;
+    width: 140vw;
+    height: 100vh;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: -28%;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .shift-left {
+    transform: translateX(17%); /* Adjust the value to control the shift distance */
+    
+  }
+#division{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    height: 100%;
+    width: 1%;
+    background-color: rgb(73, 74, 75);
+    color: antiquewhite;
+}
+#main{
+    position: relative;
+    margin-left: 0;
+    display: flex;
+    width: 68.5%;
+    height: 100%;
+    text-align: center;
+    flex-direction: column;
+   
+}
+#sideNav{
+    position: relative;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 20%;
+    padding: 2%;
+    margin: 0;
+}
+
+
+#sideNav li{
+    margin-top: 15%;
+    margin-left: 15%;
+    padding: 10%;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    border-bottom: 1px solid rgb(77, 67, 67);
+}
