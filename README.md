@@ -220,7 +220,7 @@ The design decisions for the Zeraki Sales Agent Dashboard are driven by the need
 
 ### API Endpoints (Mock)
 
-- **Schools**: `http://localhost:3000/schools`
+- **All Data**: `https://json-s.netlify.app`
 - **Invoices**: `http://localhost:3000/invoices`
 - **Collections**: `http://localhost:3000/collections`
 - **Signups**: `http://localhost:3000/signups`
@@ -228,6 +228,12 @@ The design decisions for the Zeraki Sales Agent Dashboard are driven by the need
 - **Bounced Cheques**: `http://localhost:3000/bouncedCheques`
 - **Targets**: `http://localhost:3000/targets`
 - **Signups Overview**: `http://localhost:3000/signupsOverview`
+
+### On WEBSITE https://main--zeraki-saruni.netlify.app/
+
+- **All Data**: `https://json-s.netlify.app`
+  The API is hosted on netlify as a static API.
+  Only rad operations function.
 
 ### Key Functions
 
