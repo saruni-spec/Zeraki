@@ -6,9 +6,235 @@
     align-items: center;
     width: 98%;
     height: 15%;
+    position: absolute;
     margin-top: 2%;
     margin-left: 2%;
-background-color: rgb(50, 50, 51);
-border-radius: 5px;
+    background-color: rgb(50, 50, 51);
+    border-radius: 5px;
 
 }
+.nav li{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    will-change: filter;
+    transition: filter 300ms;
+    width: 12%;
+    height: 100%;
+  }
+  
+  
+
+#display{
+   display: flex;
+    flex-direction: column;
+    padding-top: 22vh;
+    margin-left: 2%;
+    overflow-y:auto;
+    width: 100%;
+    overflow-x: hidden;
+}
+.pie{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 80%;
+    margin-top: 5%;
+    margin-bottom: 2%;
+}
+h3{
+    color: rgb(255, 255, 255);
+    font-size: 1.5em;
+    font-weight: 500;
+    margin-top: 2%;
+    padding: 0;
+}
+.squared{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 5%;
+    width: 100%;
+    height: 80%;
+    margin-top: 5%;
+    margin-bottom: 2%;
+    margin-left: 5%;
+
+}
+
+.card{
+    padding: 4%;
+    margin: 1%;
+    width: 80%;
+    height: 80%;
+    border: 1px solid rgb(226, 217, 217);
+    
+    border-radius: 5px;
+    text-align: center;
+    transition: border 0.2s ease, box-shadow 0.2s ease-in-out;
+    background-color: var(--secondary-color);
+}
+.card:hover{
+    
+    
+    border: 2px solid rgb(255, 255, 255);
+    box-shadow: 0 0 10px var(--accent-color);
+}
+
+table{
+    width: 90%;
+    border-collapse: collapse;
+    margin-top: 2%;
+    margin-bottom: 2%;
+
+}
+
+
+#schoolDetails{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    height: 100%;
+    max-height: 100%;
+    background-color: var(--secondary-color);
+
+    position: fixed;
+    margin-top: 0;
+    margin-bottom: 0;
+    left: 100%;
+    top:0;
+
+    z-index: 1;
+
+    transition: transform 0.7s ease-in-out;
+}
+
+.shift-details-left {
+    transform: translateX(-100%);
+    
+}
+
+
+#detailButtons{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top:0%;
+    left: 65%;
+    z-index: 2;
+
+    background-color: var(--secondary-color);
+    border-radius: 3px;
+}
+#openDetails{
+    position: absolute;
+    top: 8%;
+    left: 74%;
+    z-index: 1;
+
+}
+#addInvoice{
+    width: 90%;
+}
+.filter{
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.filter li{
+    cursor: pointer;
+}
+#invoiceForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+    background-color: var(--secondary-color);
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 5px;
+    width: 30%;
+    height: 70%;
+    position: fixed;
+    top:20%;
+    left: 35%;
+}
+
+#invoiceForm input{
+    width: 80%;
+    height: 50%;
+    margin: 2%;
+    border-radius: 5px;
+    border: 1px solid rgb(226, 217, 217);
+}
+
+#closeInvoiceForm{
+    position: absolute;
+    top:2%;
+    left: 76%;
+}
+#paymentForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+    background-color: var(--secondary-color);
+
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 5px;
+
+    position: fixed;
+    top:20%;
+    left: 33%;
+
+    width: 30%;
+    height: 50%;
+    margin: 2%;
+    border-radius: 5px;
+    border: 1px solid rgb(226, 217, 217);
+}
+#paymentForm input{
+    width: 80%;
+    height: 50%;
+    margin: 2%;
+    border-radius: 5px;
+    border: 1px solid rgb(226, 217, 217);
+}
+#closePaymentForm{
+    position: absolute;
+    top:2%;
+    left: 77%;
+}
+
+#headerDiv{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-evenly;
+
+}
+.headerNav{
+    cursor: pointer;
+}
+
+.noTextButton{
+    background-color: transparent;
+}
+
+.noTextButton p{
+    display: none;
+}
+tbody tr:hover{
+    background-color: var(--accent-color);
+    color: var(--secondary-color);
+    cursor: pointer;
+}
+

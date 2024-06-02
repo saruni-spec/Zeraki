@@ -21,8 +21,8 @@
     margin: 0;
     height: 100%;
     width: 1%;
-    background-color: rgb(73, 74, 75);
-    color: antiquewhite;
+    background-color: rgb(71, 70, 70);
+    color: rgb(7, 7, 7);
 }
 #main{
     position: relative;
@@ -32,6 +32,9 @@
     height: 100%;
     text-align: center;
     flex-direction: column;
+    margin-top: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
    
 }
 #sideNav{
@@ -54,5 +57,28 @@
     width: 100%;
     text-align: center;
     cursor: pointer;
-    border-bottom: 1px solid rgb(77, 67, 67);
+    
+}
+
+#SideNavMenu{
+    position: absolute;
+    top: 8%;
+    left: 24%;
+    z-index: 2;
+    
+}
+
+#landingSideNav{
+    position: absolute;
+    top: 5%;
+    left: 24%;
+    z-index: 2;
+}
+
+.noTextButton{
+    background-color: transparent;
+}
+
+.noTextButton p{
+    display: none;
 }

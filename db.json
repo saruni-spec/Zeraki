@@ -1,0 +1,283 @@
+{
+  "collections": [
+    {
+      "id": "1",
+      "schoolId": "1",
+      "date": "2024-05-01",
+      "amount": 5000,
+      "status": "Valid"
+    },
+    {
+      "id": "2",
+      "schoolId": "2",
+      "date": "2024-05-02",
+      "amount": 3000,
+      "status": "Bounced"
+    },
+    {
+      "id": "3",
+      "schoolId": "3",
+      "date": "2024-05-03",
+      "amount": 4500,
+      "status": "Valid"
+    }
+  ],
+  "signups": [
+    {
+      "id": "1",
+      "schoolId": "1",
+      "product": "Zeraki Analytics"
+    },
+    {
+      "id": "2",
+      "schoolId": "2",
+      "product": "Zeraki Finance"
+    },
+    {
+      "id": "3",
+      "schoolId": "3",
+      "product": "Zeraki Timetable"
+    },
+    {
+      "id": "4",
+      "schoolId": "1",
+      "product": "Zeraki Finance"
+    },
+    {
+      "id": "5",
+      "schoolId": "2",
+      "product": "Zeraki Timetable"
+    }
+  ],
+  "revenue": [
+    {
+      "product": "Zeraki Analytics",
+      "amount": 15000,
+      "id": "7a19"
+    },
+    {
+      "product": "Zeraki Finance",
+      "amount": 10000,
+      "id": "332f"
+    },
+    {
+      "product": "Zeraki Timetable",
+      "amount": 12000,
+      "id": "7f63"
+    }
+  ],
+  "bouncedCheques": [
+    {
+      "id": "1",
+      "schoolId": "2",
+      "amount": 3000,
+      "date": "2024-05-02"
+    }
+  ],
+  "targets": {
+    "Zeraki Analytics": {
+      "setTarget": 100,
+      "achievedTarget": 45
+    },
+    "Zeraki Finance": {
+      "setTarget": 80,
+      "achievedTarget": 30
+    },
+    "Zeraki Timetable": {
+      "setTarget": 60,
+      "achievedTarget": 25
+    }
+  },
+  "signupsOverview": {
+    "Zeraki Analytics": {
+      "Primary": 10,
+      "Secondary": 25,
+      "IGCSE": 10
+    },
+    "Zeraki Finance": {
+      "Primary": 5,
+      "Secondary": 20,
+      "IGCSE": 5
+    },
+    "Zeraki Timetable": {
+      "Primary": 10,
+      "Secondary": 10,
+      "IGCSE": 5
+    }
+  },
+  "upcomingInvoices": [
+    {
+      "id": "1",
+      "schoolId": "1",
+      "amountDue": 5000,
+      "dueDate": "2024-06-01"
+    },
+    {
+      "id": "2",
+      "schoolId": "2",
+      "amountDue": 3000,
+      "dueDate": "2024-06-05"
+    },
+    {
+      "id": "3",
+      "schoolId": "3",
+      "amountDue": 4500,
+      "dueDate": "2024-06-10"
+    }
+  ],
+  "schools": [
+    {
+      "id": "1",
+      "name": "Green Valley School",
+      "type": "Primary",
+      "products": [
+        "Zeraki Analytics",
+        "Zeraki Finance"
+      ],
+      "county": "Nairobi",
+      "registrationDate": "2023-01-15",
+      "contactInformation": {
+        "phone": "123-456-7890",
+        "email": "contact@greenvalley.edu"
+      },
+      "balance": 5000
+    },
+    {
+      "id": "2",
+      "name": "Blue Mountain High",
+      "type": "Secondary",
+      "products": [
+        "Zeraki Finance",
+        "Zeraki Timetable"
+      ],
+      "county": "Mombasa",
+      "registrationDate": "2023-03-20",
+      "contactInformation": {
+        "phone": "098-765-4321",
+        "email": "info@bluemountain.edu"
+      },
+      "balance": 3000
+    },
+    {
+      "id": "3",
+      "name": "Sunrise International",
+      "type": "IGCSE",
+      "products": [
+        "Zeraki Timetable"
+      ],
+      "county": "Kisumu",
+      "registrationDate": "2023-05-25",
+      "contactInformation": {
+        "phone": "555-123-4567",
+        "email": "admin@sunriseint.edu"
+      },
+      "balance": 4500
+    }
+  ],
+  "invoices": [
+    {
+      "id": "1",
+      "schoolId": "1",
+      "invoiceNumber": "INV-001",
+      "invoiceItem": "Zeraki Analytics",
+      "creationDate": "2024-04-01",
+      "dueDate": "2024-06-01",
+      "amount": 5000,
+      "paidAmount": 0,
+      "balance": 5000,
+      "status": "Pending",
+      "daysUntilDue": 30
+    },
+    {
+      "id": "2",
+      "schoolId": "2",
+      "invoiceNumber": "INV-002",
+      "invoiceItem": "Zeraki Finance",
+      "creationDate": "2024-04-05",
+      "dueDate": "2024-06-05",
+      "amount": 3000,
+      "paidAmount": 0,
+      "balance": 3000,
+      "status": "Pending",
+      "daysUntilDue": 35
+    },
+    {
+      "id": "3",
+      "schoolId": "3",
+      "invoiceNumber": "INV-003",
+      "invoiceItem": "Zeraki Timetable",
+      "creationDate": "2024-04-10",
+      "dueDate": "2024-06-10",
+      "amount": 4500,
+      "paidAmount": 0,
+      "balance": 4500,
+      "status": "Pending",
+      "daysUntilDue": 40
+    },
+    {
+      "id": "547855",
+      "schoolId": "1",
+      "invoiceNumber": "712399",
+      "invoiceItem": "Zeraki Finance",
+      "creationDate": "2024-05-31T17:24:29.614Z",
+      "dueDate": "2024-06-25",
+      "amount": 6700,
+      "paidAmount": 0,
+      "balance": 6700,
+      "daysUntilDue": 0,
+      "status": "Overdue"
+    },
+    {
+      "id": "46537",
+      "schoolId": "1",
+      "invoiceNumber": "15719",
+      "invoiceItem": "Zeraki Timetable",
+      "creationDate": "2024-06-01T16:07:57.356Z",
+      "dueDate": "2024-06-29",
+      "amount": 5500,
+      "paidAmount": 0,
+      "balance": 5500,
+      "daysUntilDue": 0,
+      "status": "Overdue"
+    },
+    {
+      "id": "368826",
+      "schoolId": "1",
+      "invoiceNumber": "177675",
+      "invoiceItem": "Zeraki Analytics",
+      "creationDate": "2024-06-01T16:19:00.388Z",
+      "dueDate": "2024-07-17",
+      "amount": 2000,
+      "paidAmount": 0,
+      "balance": 2000,
+      "daysUntilDue": 0,
+      "status": "Overdue"
+    },
+    {
+      "id": "440989",
+      "schoolId": "1",
+      "invoiceNumber": "204505",
+      "invoiceItem": "Zeraki Finance",
+      "creationDate": "2024-06-01T16:46:11.744Z",
+      "dueDate": "2024-08-08",
+      "amount": 8900,
+      "paidAmount": 0,
+      "balance": 8900,
+      "daysUntilDue": 0,
+      "status": "Pending"
+    },
+    {
+      "id": "243256",
+      "schoolId": "2",
+      "invoiceNumber": "30656",
+      "invoiceItem": "Zeraki Timetable",
+      "creationDate": "2024-06-01T17:39:42.117Z",
+      "dueDate": "2024-07-13",
+      "amount": 9000,
+      "paidAmount": 0,
+      "balance": 9000,
+      "daysUntilDue": 0,
+      "status": "Overdue"
+    }
+  ]
+}
