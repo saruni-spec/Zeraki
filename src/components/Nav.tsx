@@ -1,18 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../static/nav.css";
 
-type NavItem = {
+type ListItem = {
   label: string;
   onClick: () => void;
 };
 
-const NavList = ({ items }: { items: NavItem[] }) => {
+interface NavItem {
+  items: ListItem[];
+  active?: number;
+}
+
+const NavList: React.FC<NavItem> = ({ items, active }) => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   const handleClick = (index: number, onClick: () => void) => {
     setActiveIndex(index);
     onClick();
   };
+  useEffect(() => {
+    if (active) {
+      setActiveIndex(active);
+    }
+  }, [active]);
 
   return (
     <ul className="nav">

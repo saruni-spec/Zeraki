@@ -1,5 +1,7 @@
 import React from "react";
 import "../static/nav.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 interface Invoice {
   id: string;
@@ -11,20 +13,22 @@ interface Invoice {
   amount: number;
   paidAmount: number;
   balance: number;
-  daysUntilDue: number;
+
   status: string;
 }
 interface InvoiceTableProps {
   Invoices: Invoice[];
   showPaymentForm: (show: boolean) => void;
+  deleteInvoice: (invoice: Invoice) => void;
 }
 
 const InvoiceTable: React.FC<InvoiceTableProps> = ({
   Invoices,
   showPaymentForm,
+  deleteInvoice,
 }) => {
   return (
-    <table>
+    <table className="tableMargin">
       <thead>
         <tr>
           <th>Invoice Number</th>
@@ -51,8 +55,23 @@ const InvoiceTable: React.FC<InvoiceTableProps> = ({
             <td>{invoice.dueDate}</td>
             <td>{invoice.amount}</td>
             <td>{invoice.paidAmount}</td>
-            <td>{invoice.daysUntilDue}</td>
+            <td>
+              {Math.ceil(
+                (new Date(invoice.dueDate).getTime() - new Date().getTime()) /
+                  (1000 * 60 * 60 * 24)
+              )}
+            </td>
             <td>{invoice.status}</td>
+            <td
+              title="delete this invoice"
+              className="markStatus"
+              onClick={(event) => {
+                event.stopPropagation();
+                deleteInvoice(invoice);
+              }}
+            >
+              Delete Invoice <FontAwesomeIcon icon={faTrash} />
+            </td>
           </tr>
         ))}
       </tbody>

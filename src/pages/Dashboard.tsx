@@ -12,8 +12,13 @@ import Loading from "../components/Loading";
 interface Metrics {
   colletions: number;
   total_signups: number;
-  revenue: number;
+  revenue: Revenue[];
   bounced_checks: number;
+}
+interface Revenue {
+  product: string;
+  amount: number;
+  id: string;
 }
 
 interface Targets {
@@ -25,14 +30,20 @@ interface Targets {
 interface Invoice {
   id: string;
   schoolId: string;
-  amountDue: string;
+  invoiceNumber: string;
+  invoiceItem: string;
+  creationDate: string;
   dueDate: string;
+  amount: number;
+  paidAmount: number;
+  balance: number;
+  status: string;
 }
 interface Collection {
   id: string;
   schoolId: string;
   date: string;
-  amount: string;
+  amount: number;
   status: string;
 }
 interface SignUpOverview {
@@ -49,6 +60,7 @@ const Dashboard = () => {
   const [signUps, setSignUps] = useState<SignUpOverview>();
   const [loading, setLoading] = useState<boolean>(false);
   const [currentItem, setCurrentItem] = useState<string>("metrics");
+  const [active, setActive] = useState<number | undefined>(undefined);
 
   const getMetrics = async () => {
     setLoading(true);
@@ -67,7 +79,7 @@ const Dashboard = () => {
     setMetrics({
       colletions: collections.length,
       total_signups: signups.length,
-      revenue: revenue.length,
+      revenue: revenue,
       bounced_checks: bouncedCheques.length,
     });
     setCurrentItem("metrics");
@@ -82,8 +94,13 @@ const Dashboard = () => {
       case "metrics":
         setMetrics(data);
         break;
-      case "upcomingInvoices": {
-        const sortedInvoices = [...data].sort(
+      case "invoices": {
+        const allInvoices = data;
+        const UpcomingInvoices = allInvoices.filter(
+          (invoice: Invoice) => invoice.status !== "Completed"
+        );
+
+        const sortedInvoices = [...UpcomingInvoices].sort(
           (a, b) =>
             new Date(b.dueDate).getTime() - new Date(a.dueDate).getTime()
         );
@@ -113,26 +130,49 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    getMetrics();
-  }, []);
+    switch (currentItem) {
+      case "metrics":
+        getMetrics();
+        setActive(0);
+        break;
+      case "targets":
+        getTargets();
+        setActive(1);
+        break;
+      case "signupsOverview":
+        getData("signupsOverview");
+        setActive(2);
+        break;
+      case "invoices":
+        getData("invoices");
+        setActive(3);
+        break;
+      case "collections":
+        getData("collections");
+        setActive(4);
+        break;
+      default:
+        break;
+    }
+  }, [currentItem]);
 
   const NavItems = [
-    { label: "Metrics", onClick: getMetrics },
+    { label: "Metrics OverView", onClick: getMetrics },
     { label: "Targets", onClick: getTargets },
     { label: "Signups", onClick: () => getData("signupsOverview") },
-    { label: "Upcoming Invoices", onClick: () => getData("upcomingInvoices") },
+    { label: "Upcoming Invoices", onClick: () => getData("invoices") },
     { label: "Collections", onClick: () => getData("collections") },
   ];
 
   return (
     <>
-      <NavList items={NavItems} />
+      <NavList items={NavItems} active={active} />
       {loading && <Loading />}
 
       {!loading && (
         <div id="display">
           {currentItem === "metrics" && metrics && (
-            <MetricsTab metrics={metrics} />
+            <MetricsTab metrics={metrics} setCurrentItem={setCurrentItem} />
           )}
           {currentItem === "targets" && targets && (
             <TargetsCharts targets={targets} />
@@ -141,7 +181,7 @@ const Dashboard = () => {
             <SignUpChart signUps={signUps} />
           )}
 
-          {currentItem === "upcomingInvoices" && invoices && (
+          {currentItem === "invoices" && invoices && (
             <UpcomingInvoices invoices={invoices} />
           )}
           {currentItem === "collections" && collections && (

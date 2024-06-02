@@ -38,7 +38,6 @@ interface Invoices {
   amount: number;
   paidAmount: number;
   balance: number;
-  daysUntilDue: number;
   status: string;
 }
 interface Collections {
@@ -82,20 +81,12 @@ const Schools = () => {
     const allInvoices = await response.json();
     const allCollections = await response2.json();
 
-    console.log(allInvoices);
-    console.log(allCollections);
-
-    console.log(schoolId);
-
     const schoolInvoices = allInvoices.filter(
       (invoice: Invoices) => invoice.schoolId === schoolId
     );
     const schoolCollections = allCollections.filter(
       (collection: Collections) => collection.schoolId === schoolId
     );
-
-    console.log(schoolInvoices);
-    console.log(schoolCollections);
 
     setInvoices(schoolInvoices);
     setFilteredInvoices(schoolInvoices);
@@ -146,9 +137,7 @@ const Schools = () => {
 
       data = invoices;
       filteredData = data?.filter((item) => item.status === filter);
-      console.log(data, "filtering");
-      console.log(filter);
-      console.log(filteredData);
+
       setFilteredInvoices(filteredData);
     }
     if (currentItem === "collections") {
@@ -161,11 +150,6 @@ const Schools = () => {
 
   const [invoiceForm, showInvoiceForm] = useState<boolean>(false);
 
-  const newInvoice = async (schoolId: number) => {
-    showInvoiceForm(true);
-    console.log(schoolId);
-  };
-
   const saveInvoice = async (newInvoice: Invoices) => {
     const response = await fetch("http://localhost:3000/invoices", {
       method: "POST",
@@ -176,10 +160,10 @@ const Schools = () => {
     });
 
     if (response.ok) {
-      console.log("Invoice saved successfully");
+      alert("Invoice saved successfully");
       fetchData();
     } else {
-      console.error("Error saving invoice");
+      alert("Error saving invoice");
     }
   };
 
@@ -196,9 +180,9 @@ const Schools = () => {
     const dueDate = form.date.value;
     const amount = parseInt(form.amount.value);
     const schoolId = selectedSchool?.id;
-    const invoiceNumber = generateNumber().toString();
+    const invoiceNumber = "INV-" + generateNumber().toString();
     const id = generateNumber().toString();
-    const creationDate = new Date().toISOString();
+    const creationDate = new Date().toISOString().split("T")[0];
     const paidAmount = 0;
     const balance = amount - paidAmount;
     const daysUntilDue = 0;
@@ -233,10 +217,10 @@ const Schools = () => {
     });
 
     if (response.ok) {
-      console.log("Payment saved successfully");
+      alert("Payment saved successfully");
       fetchData();
     } else {
-      console.error("Error saving payment");
+      alert("Error saving payment");
     }
   };
 
@@ -253,10 +237,10 @@ const Schools = () => {
     );
 
     if (response.ok) {
-      console.log("Invoice updated successfully");
+      alert("Invoice updated successfully");
       fetchData();
     } else {
-      console.error("Error updating invoice");
+      alert("Error updating invoice");
     }
   };
 
@@ -303,10 +287,10 @@ const Schools = () => {
     );
 
     if (response.ok) {
-      console.log("Collection updated successfully");
+      alert("Collection updated successfully");
       fetchData();
     } else {
-      console.error("Error updating collection");
+      alert("Error updating collection");
     }
   };
 
@@ -324,10 +308,28 @@ const Schools = () => {
     );
 
     if (response.ok) {
-      console.log("Collection updated successfully");
+      alert("Collection updated successfully");
       fetchData();
     } else {
-      console.error("Error updating collection");
+      alert("Error updating collection");
+    }
+  };
+
+  const deleteInvoice = async (invoice: Invoices) => {
+    if (window.confirm("Are you sure you want to delete this invoice?")) {
+      const response = await fetch(
+        `http://localhost:3000/invoices/${invoice.id}`,
+        {
+          method: "DELETE",
+        }
+      );
+
+      if (response.status === 200) {
+        alert("Invoice deleted successfully");
+        fetchData();
+      } else {
+        alert("Error deleting invoice");
+      }
     }
   };
 
@@ -372,11 +374,12 @@ const Schools = () => {
                 type="button"
                 id="addInvoice"
                 onClick={() => {
-                  newInvoice(selectedSchool.id);
+                  showInvoiceForm(true);
                 }}
               >
                 Add Invoice
               </button>
+              <h4>Invoices</h4>
               <Filter
                 filterItems={[
                   { label: "All", addFilter: addFilter },
@@ -388,6 +391,7 @@ const Schools = () => {
               <InvoiceTable
                 Invoices={filteredInvoices ? filteredInvoices : invoices}
                 showPaymentForm={showPaymentForm}
+                deleteInvoice={deleteInvoice}
               />
               {invoiceForm && (
                 <InvoiceForm
@@ -405,6 +409,7 @@ const Schools = () => {
           )}
           {currentItem === "collections" && collections && (
             <>
+              <h4>Collections</h4>
               <Filter
                 filterItems={[
                   { label: "All", addFilter: () => addFilter("All") },

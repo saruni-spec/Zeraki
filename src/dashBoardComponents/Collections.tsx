@@ -2,7 +2,7 @@ interface Collection {
   id: string;
   schoolId: string;
   date: string;
-  amount: string;
+  amount: number;
   status: string;
 }
 

@@ -8,7 +8,8 @@
   background-color: #080808;
   --secondary-color: #3c3c3d;
   --tertiary-color: #e8e9ec;
-  --accent-color:#00AEEF ;
+  --accent-color: #638bb3 ;
+  --primary-color: #080808;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -81,13 +82,53 @@ li.react:hover {
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: var(--accent-color);
-    background-color: #ffffff;
+    color: rgb(253, 252, 252);
+    background-color: #fdfdf8;
+    --secondary-color: #1a4570;
+    --tertiary-color: #e8e9ec;
+    --accent-color: rgb(198, 198, 218);
+    --primary-color: #6190c0;
   }
   a:hover {
     color: var(--accent-color);
   }
   button {
-    background-color: #f9f9f9;
+    background-color: var(--accent-color);
+    border: 2px solid var(--secondary-color);
+    color: var(--secondary-color);
+    transition: background-color 0.7s ease-in-out, color 0.7s ease-in-out;
+  }
+button:hover{
+  background-color: var(--secondary-color);
+  color: var(--accent-color);
+  
+}
+  
+
+  .noTextButton {
+    background-color: transparent;
+    color: var(--accent-color);
+  }
+  tr{
+    text-align: left;
+    color: var(--secondary-color);
+  }
+  .card:hover{
+    background-color: var(--tertiary-color);
+    color: var(--secondary-color);
+    border: 2px solid var(--accent-color);
+  }
+  h1,h2,h3,h4,h5,h6{
+    color: var(--secondary-color);
+  }
+  form h1, form h2, form h3, form h4, form h5, form h6{
+    color: var(--tertiary-color);
+  }
+  .pie{
+    color:var(--secondary-color);
+  }
+  #schoolDetails h2, #schoolDetails h3{
+    color: var(--tertiary-color);
+
   }
 }

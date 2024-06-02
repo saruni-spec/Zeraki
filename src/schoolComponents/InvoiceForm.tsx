@@ -13,6 +13,8 @@ const InvoiceForm: React.FC<InvoiceFormProps> = ({
 }) => {
   return (
     <form id="invoiceForm" onSubmit={InvoiceCreation}>
+      <h4>Invoice Information</h4>
+
       <button
         type="button"
         id="closeInvoiceForm"

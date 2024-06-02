@@ -21,7 +21,7 @@
     margin: 0;
     height: 100%;
     width: 1%;
-    background-color: rgb(71, 70, 70);
+    background-color: var(--secondary-color);
     color: rgb(7, 7, 7);
 }
 #main{
@@ -47,6 +47,7 @@
     width: 20%;
     padding: 2%;
     margin: 0;
+    background-color: var(--secondary-color);
 }
 
 

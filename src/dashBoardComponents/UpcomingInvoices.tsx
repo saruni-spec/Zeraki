@@ -1,8 +1,14 @@
 interface Invoice {
   id: string;
   schoolId: string;
-  amountDue: string;
+  invoiceNumber: string;
+  invoiceItem: string;
+  creationDate: string;
   dueDate: string;
+  amount: number;
+  paidAmount: number;
+  balance: number;
+  status: string;
 }
 
 const UpcomingInvoices = ({ invoices }: { invoices: Invoice[] }) => {
@@ -22,7 +28,7 @@ const UpcomingInvoices = ({ invoices }: { invoices: Invoice[] }) => {
             <td>{invoice.id}</td>
             <td>{invoice.schoolId}</td>
             <td>{invoice.dueDate}</td>
-            <td>{invoice.amountDue}</td>
+            <td>{invoice.amount - invoice.paidAmount}</td>
           </tr>
         ))}
       </tbody>

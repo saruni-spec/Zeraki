@@ -20,6 +20,41 @@
       "date": "2024-05-03",
       "amount": 4500,
       "status": "Valid"
+    },
+    {
+      "id": "4",
+      "schoolId": "4",
+      "date": "2024-05-04",
+      "amount": 3200,
+      "status": "Valid"
+    },
+    {
+      "id": "5",
+      "schoolId": "5",
+      "date": "2024-05-05",
+      "amount": 2800,
+      "status": "Valid"
+    },
+    {
+      "id": "6",
+      "schoolId": "6",
+      "date": "2024-05-06",
+      "amount": 3100,
+      "status": "Bounced"
+    },
+    {
+      "id": "7",
+      "schoolId": "7",
+      "date": "2024-05-07",
+      "amount": 2700,
+      "status": "Valid"
+    },
+    {
+      "id": "698893",
+      "schoolId": "1",
+      "date": "2024-06-02",
+      "amount": 3000,
+      "status": "Paid"
     }
   ],
   "signups": [
@@ -47,6 +82,36 @@
       "id": "5",
       "schoolId": "2",
       "product": "Zeraki Timetable"
+    },
+    {
+      "id": "6",
+      "schoolId": "4",
+      "product": "Zeraki Analytics"
+    },
+    {
+      "id": "7",
+      "schoolId": "4",
+      "product": "Zeraki Timetable"
+    },
+    {
+      "id": "8",
+      "schoolId": "5",
+      "product": "Zeraki Finance"
+    },
+    {
+      "id": "9",
+      "schoolId": "5",
+      "product": "Zeraki Analytics"
+    },
+    {
+      "id": "10",
+      "schoolId": "6",
+      "product": "Zeraki Timetable"
+    },
+    {
+      "id": "11",
+      "schoolId": "7",
+      "product": "Zeraki Finance"
     }
   ],
   "revenue": [
@@ -64,6 +129,21 @@
       "product": "Zeraki Timetable",
       "amount": 12000,
       "id": "7f63"
+    },
+    {
+      "product": "Zeraki Analytics",
+      "amount": 16000,
+      "id": "8a21"
+    },
+    {
+      "product": "Zeraki Finance",
+      "amount": 11000,
+      "id": "4456"
+    },
+    {
+      "product": "Zeraki Timetable",
+      "amount": 13000,
+      "id": "8f72"
     }
   ],
   "bouncedCheques": [
@@ -72,6 +152,12 @@
       "schoolId": "2",
       "amount": 3000,
       "date": "2024-05-02"
+    },
+    {
+      "id": "2",
+      "schoolId": "6",
+      "amount": 3100,
+      "date": "2024-05-06"
     }
   ],
   "targets": {
@@ -92,39 +178,22 @@
     "Zeraki Analytics": {
       "Primary": 10,
       "Secondary": 25,
-      "IGCSE": 10
+      "IGCSE": 10,
+      "University": 5
     },
     "Zeraki Finance": {
       "Primary": 5,
       "Secondary": 20,
-      "IGCSE": 5
+      "IGCSE": 5,
+      "University": 3
     },
     "Zeraki Timetable": {
       "Primary": 10,
       "Secondary": 10,
-      "IGCSE": 5
+      "IGCSE": 5,
+      "University": 2
     }
   },
-  "upcomingInvoices": [
-    {
-      "id": "1",
-      "schoolId": "1",
-      "amountDue": 5000,
-      "dueDate": "2024-06-01"
-    },
-    {
-      "id": "2",
-      "schoolId": "2",
-      "amountDue": 3000,
-      "dueDate": "2024-06-05"
-    },
-    {
-      "id": "3",
-      "schoolId": "3",
-      "amountDue": 4500,
-      "dueDate": "2024-06-10"
-    }
-  ],
   "schools": [
     {
       "id": "1",
@@ -172,6 +241,68 @@
         "email": "admin@sunriseint.edu"
       },
       "balance": 4500
+    },
+    {
+      "id": "4",
+      "name": "Ocean Breeze School",
+      "type": "Primary",
+      "products": [
+        "Zeraki Analytics",
+        "Zeraki Timetable"
+      ],
+      "county": "Nairobi",
+      "registrationDate": "2023-02-10",
+      "contactInformation": {
+        "phone": "777-888-9999",
+        "email": "info@oceanbreeze.edu"
+      },
+      "balance": 3200
+    },
+    {
+      "id": "5",
+      "name": "Mountain View School",
+      "type": "Secondary",
+      "products": [
+        "Zeraki Finance",
+        "Zeraki Analytics"
+      ],
+      "county": "Mombasa",
+      "registrationDate": "2023-03-30",
+      "contactInformation": {
+        "phone": "666-555-4444",
+        "email": "admin@mountainview.edu"
+      },
+      "balance": 2800
+    },
+    {
+      "id": "6",
+      "name": "Riverbank School",
+      "type": "IGCSE",
+      "products": [
+        "Zeraki Timetable"
+      ],
+      "county": "Kisumu",
+      "registrationDate": "2023-04-15",
+      "contactInformation": {
+        "phone": "333-222-1111",
+        "email": "contact@riverbank.edu"
+      },
+      "balance": 3100
+    },
+    {
+      "id": "7",
+      "name": "Skyline Academy",
+      "type": "Primary",
+      "products": [
+        "Zeraki Finance"
+      ],
+      "county": "Nairobi",
+      "registrationDate": "2023-05-05",
+      "contactInformation": {
+        "phone": "111-222-3333",
+        "email": "info@skyline.edu"
+      },
+      "balance": 2700
     }
   ],
   "invoices": [
@@ -183,10 +314,9 @@
       "creationDate": "2024-04-01",
       "dueDate": "2024-06-01",
       "amount": 5000,
-      "paidAmount": 0,
-      "balance": 5000,
-      "status": "Pending",
-      "daysUntilDue": 30
+      "paidAmount": 3000,
+      "balance": 2000,
+      "status": "Pending"
     },
     {
       "id": "2",
@@ -198,8 +328,7 @@
       "amount": 3000,
       "paidAmount": 0,
       "balance": 3000,
-      "status": "Pending",
-      "daysUntilDue": 35
+      "status": "Pending"
     },
     {
       "id": "3",
@@ -211,73 +340,55 @@
       "amount": 4500,
       "paidAmount": 0,
       "balance": 4500,
-      "status": "Pending",
-      "daysUntilDue": 40
-    },
-    {
-      "id": "547855",
-      "schoolId": "1",
-      "invoiceNumber": "712399",
-      "invoiceItem": "Zeraki Finance",
-      "creationDate": "2024-05-31T17:24:29.614Z",
-      "dueDate": "2024-06-25",
-      "amount": 6700,
-      "paidAmount": 0,
-      "balance": 6700,
-      "daysUntilDue": 0,
-      "status": "Overdue"
-    },
-    {
-      "id": "46537",
-      "schoolId": "1",
-      "invoiceNumber": "15719",
-      "invoiceItem": "Zeraki Timetable",
-      "creationDate": "2024-06-01T16:07:57.356Z",
-      "dueDate": "2024-06-29",
-      "amount": 5500,
-      "paidAmount": 0,
-      "balance": 5500,
-      "daysUntilDue": 0,
-      "status": "Overdue"
-    },
-    {
-      "id": "368826",
-      "schoolId": "1",
-      "invoiceNumber": "177675",
-      "invoiceItem": "Zeraki Analytics",
-      "creationDate": "2024-06-01T16:19:00.388Z",
-      "dueDate": "2024-07-17",
-      "amount": 2000,
-      "paidAmount": 0,
-      "balance": 2000,
-      "daysUntilDue": 0,
-      "status": "Overdue"
-    },
-    {
-      "id": "440989",
-      "schoolId": "1",
-      "invoiceNumber": "204505",
-      "invoiceItem": "Zeraki Finance",
-      "creationDate": "2024-06-01T16:46:11.744Z",
-      "dueDate": "2024-08-08",
-      "amount": 8900,
-      "paidAmount": 0,
-      "balance": 8900,
-      "daysUntilDue": 0,
       "status": "Pending"
     },
     {
-      "id": "243256",
-      "schoolId": "2",
-      "invoiceNumber": "30656",
-      "invoiceItem": "Zeraki Timetable",
-      "creationDate": "2024-06-01T17:39:42.117Z",
-      "dueDate": "2024-07-13",
-      "amount": 9000,
+      "id": "4",
+      "schoolId": "4",
+      "invoiceNumber": "INV-004",
+      "invoiceItem": "Zeraki Analytics",
+      "creationDate": "2024-05-01",
+      "dueDate": "2024-07-01",
+      "amount": 3200,
       "paidAmount": 0,
-      "balance": 9000,
-      "daysUntilDue": 0,
-      "status": "Overdue"
+      "balance": 3200,
+      "status": "Pending"
+    },
+    {
+      "id": "5",
+      "schoolId": "5",
+      "invoiceNumber": "INV-005",
+      "invoiceItem": "Zeraki Finance",
+      "creationDate": "2024-05-05",
+      "dueDate": "2024-07-05",
+      "amount": 2800,
+      "paidAmount": 0,
+      "balance": 2800,
+      "status": "Pending"
+    },
+    {
+      "id": "6",
+      "schoolId": "6",
+      "invoiceNumber": "INV-006",
+      "invoiceItem": "Zeraki Timetable",
+      "creationDate": "2024-05-10",
+      "dueDate": "2024-07-10",
+      "amount": 3100,
+      "paidAmount": 0,
+      "balance": 3100,
+      "status": "Pending"
+    },
+    {
+      "id": "7",
+      "schoolId": "7",
+      "invoiceNumber": "INV-007",
+      "invoiceItem": "Zeraki Finance",
+      "creationDate": "2024-05-15",
+      "dueDate": "2024-07-15",
+      "amount": 2700,
+      "paidAmount": 0,
+      "balance": 2700,
+      "status": "Pending"
     }
   ]
 }

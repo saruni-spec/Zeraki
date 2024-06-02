@@ -1,5 +1,7 @@
 import React from "react";
 import "../static/nav.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 interface Collections {
   id: string;
@@ -20,7 +22,7 @@ const CollectionTable: React.FC<CollectionsTableProps> = ({
   markValid,
 }) => {
   return (
-    <table>
+    <table className="tableMargin">
       <thead>
         <tr>
           <th>ID</th>
@@ -28,6 +30,8 @@ const CollectionTable: React.FC<CollectionsTableProps> = ({
           <th>Date</th>
           <th>Amount</th>
           <th>Status</th>
+          <th>Mark as Valid</th>
+          <th>Mark as Bounced</th>
         </tr>
       </thead>
       <tbody>
@@ -39,18 +43,20 @@ const CollectionTable: React.FC<CollectionsTableProps> = ({
             <td>{collection.amount}</td>
             <td>{collection.status}</td>
             <td
+              className="markStatus"
               onClick={() => {
                 markValid(collection);
               }}
             >
-              Mark As Valid
+              <FontAwesomeIcon icon={faCheck} />
             </td>
             <td
+              className="markStatus"
               onClick={() => {
                 markBounced(collection);
               }}
             >
-              Mark As Bounced
+              <FontAwesomeIcon icon={faXmark} />
             </td>
           </tr>
         ))}

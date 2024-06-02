@@ -14,6 +14,8 @@ const PaymentForm: React.FC<PaymentFormProps> = ({
 }) => {
   return (
     <form id="paymentForm" onSubmit={PaymentCreation}>
+      <h4>Payment Information</h4>
+
       <button
         type="button"
         id="closePaymentForm"
