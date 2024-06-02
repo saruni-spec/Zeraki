@@ -381,6 +381,19 @@
       "paidAmount": 0,
       "balance": 2700,
       "status": "Pending"
+    },
+    {
+      "id": "824877",
+      "schoolId": "1",
+      "invoiceNumber": "INV-207094",
+      "invoiceItem": "Zeraki Timetable",
+      "creationDate": "2024-06-02",
+      "dueDate": "2024-07-25",
+      "amount": 34000,
+      "paidAmount": 0,
+      "balance": 34000,
+      "daysUntilDue": 0,
+      "status": "Overdue"
     }
   ]
 }
