@@ -70,17 +70,23 @@ const Dashboard = () => {
   // Function to fetch metrics data from the server
   const getMetrics = async () => {
     setLoading(true);
-    const response1 = await fetch("http://localhost:3000/collections");
-    const response2 = await fetch("http://localhost:3000/signups");
-    const response3 = await fetch("http://localhost:3000/revenue");
-    const response4 = await fetch("http://localhost:3000/bouncedCheques");
+    const response = await fetch("https://json-s.netlify.app/db.json");
+    if (!response.ok) {
+      throw new Error("Network response was not ok" + response.statusText);
+    }
+    const data = await response.json();
 
-    const collections = await response1.json();
-    const signups = await response2.json();
-    const revenue = await response3.json();
-    const bouncedCheques = await response4.json();
+    console.log("Metrics", data);
 
-    console.log(collections);
+    const response1 = data.collections;
+    const response2 = data.signups;
+    const response3 = data.revenue;
+    const response4 = data.bouncedCheques;
+
+    const collections = response1;
+    const signups = response2;
+    const revenue = response3;
+    const bouncedCheques = response4;
 
     setMetrics({
       colletions: collections.length,
@@ -95,14 +101,11 @@ const Dashboard = () => {
   // Generic function to fetch different types of data based on the item parameter
   const getData = async (item: string) => {
     setLoading(true);
-    const response = await fetch(`http://localhost:3000/${item}`);
+    const response = await fetch(`https://json-s.netlify.app/db.json`);
     const data = await response.json();
     switch (item) {
-      case "metrics":
-        setMetrics(data);
-        break;
       case "invoices": {
-        const allInvoices = data;
+        const allInvoices = data.invoices;
         const UpcomingInvoices = allInvoices.filter(
           (invoice: Invoice) => invoice.status !== "Completed"
         );
@@ -115,10 +118,10 @@ const Dashboard = () => {
         break;
       }
       case "collections":
-        setCollections(data);
+        setCollections(data.collections);
         break;
       case "signupsOverview":
-        setSignUps(data);
+        setSignUps(data.signupsOverview);
         break;
       default:
         console.log("Invalid item");
@@ -130,9 +133,9 @@ const Dashboard = () => {
   // Function to fetch targets data from the server
   const getTargets = async () => {
     setLoading(true);
-    const response = await fetch("http://localhost:3000/targets");
+    const response = await fetch("https://json-s.netlify.app/db.json");
     const data = await response.json();
-    setTargets(data);
+    setTargets(data.targets);
     setCurrentItem("targets");
     setLoading(false);
   };

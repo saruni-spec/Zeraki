@@ -69,9 +69,9 @@ const Schools = () => {
   // Fetch the list of schools from the server
   const getSchools = async () => {
     setLoading(true);
-    const response = await fetch("http://localhost:3000/schools");
+    const response = await fetch("https://json-s.netlify.app/db.json");
     const data = await response.json();
-    setSchools(data);
+    setSchools(data.schools);
     setCurrentItem("schools");
     setLoading(false);
   };
@@ -79,11 +79,14 @@ const Schools = () => {
   // Fetch invoices and collections for a specific school
   const getSchoolData = async (schoolId: string) => {
     setLoading(true);
-    const response = await fetch(`http://localhost:3000/invoices`);
-    const response2 = await fetch(`http://localhost:3000/collections`);
+    const response = await fetch("https://json-s.netlify.app/db.json");
+    if (!response.ok) {
+      throw new Error("Network response was not ok" + response.statusText);
+    }
+    const data = await response.json();
 
-    const allInvoices = await response.json();
-    const allCollections = await response2.json();
+    const allInvoices = data.invoices;
+    const allCollections = data.collections;
 
     const schoolInvoices = allInvoices.filter(
       (invoice: Invoices) => invoice.schoolId === schoolId
@@ -103,11 +106,12 @@ const Schools = () => {
   // Fetch all invoices and collections and filter them based on the selected school
   const fetchData = async () => {
     setLoading(true);
-    const response = await fetch(`http://localhost:3000/invoices`);
-    const response2 = await fetch(`http://localhost:3000/collections`);
+    const response = await fetch(`https://json-s.netlify.app/db.json`);
 
-    const allInvoices = await response.json();
-    const allCollections = await response2.json();
+    const data = await response.json();
+
+    const allInvoices = data.invoices;
+    const allCollections = data.collections;
 
     if (selectedSchool) {
       const schoolId = selectedSchool.id;
@@ -159,7 +163,7 @@ const Schools = () => {
 
   // Save a new invoice to the server
   const saveInvoice = async (newInvoice: Invoices) => {
-    const response = await fetch("http://localhost:3000/invoices", {
+    const response = await fetch("https://json-s.netlify.app/db.json", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -171,7 +175,7 @@ const Schools = () => {
       alert("Invoice saved successfully");
       fetchData();
     } else {
-      alert("Error saving invoice");
+      alert("Error saving invoice, Using Static API");
     }
   };
 
@@ -219,7 +223,7 @@ const Schools = () => {
 
   // Save a new payment to the server
   const savePayment = async (newPayment: Collections) => {
-    const response = await fetch("http://localhost:3000/collections", {
+    const response = await fetch("https://json-s.netlify.app/db.json", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -231,7 +235,7 @@ const Schools = () => {
       alert("Payment saved successfully");
       fetchData();
     } else {
-      alert("Error saving payment");
+      alert("Error saving payment,using Static API");
     }
   };
 
@@ -252,7 +256,7 @@ const Schools = () => {
       alert("Invoice updated successfully");
       fetchData();
     } else {
-      alert("Error updating invoice");
+      alert("Error updating invoice, Using Static API");
     }
   };
 
@@ -289,62 +293,57 @@ const Schools = () => {
   // Mark a collection as valid
   const markValid = async (collection: Collections) => {
     collection.status = "Valid";
-    const response = await fetch(
-      `http://localhost:3000/collections/${collection.id}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(collection),
-      }
-    );
+    const response = await fetch(`https://json-s.netlify.app/db.json`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(collection),
+    });
 
     if (response.ok) {
       alert("Collection updated successfully");
       fetchData();
     } else {
-      alert("Error updating collection");
+      alert("Error updating collection, Using Static API");
     }
   };
 
   // Mark a collection as bounced
   const markBounced = async (collection: Collections) => {
     collection.status = "Bounced";
-    const response = await fetch(
-      `http://localhost:3000/collections/${collection.id}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(collection),
-      }
-    );
+    const response = await fetch(`https://json-s.netlify.app/db.json`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(collection),
+    });
 
     if (response.ok) {
       alert("Collection updated successfully");
       fetchData();
     } else {
-      alert("Error updating collection");
+      alert("Error updating collection, Using Static API");
     }
   };
 
   // Delete an invoice
   const deleteInvoice = async (invoice: Invoices) => {
-    if (window.confirm("Are you sure you want to delete this invoice?")) {
-      const response = await fetch(
-        `http://localhost:3000/invoices/${invoice.id}`,
-        {
-          method: "DELETE",
-        }
-      );
+    if (
+      window.confirm(
+        `Are you sure you want to delete this invoice?${invoice.id}`
+      )
+    ) {
+      const response = await fetch(`https://json-s.netlify.app/db.json`, {
+        method: "DELETE",
+      });
 
       if (response.status === 200) {
         alert("Invoice deleted successfully");
         fetchData();
       } else {
-        alert("Error deleting invoice");
+        alert("Error deleting invoice, Using Static API");
       }
     }
   };
