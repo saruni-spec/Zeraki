@@ -8,7 +8,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import NavList from "../components/Nav";
-
 import SchoolList from "../schoolComponents/SchoolList";
 import Filter from "../schoolComponents/Filter";
 import InvoiceTable from "../schoolComponents/Invoices";
@@ -18,6 +17,7 @@ import PaymentForm from "../schoolComponents/PaymentForm";
 import SchoolDetails from "../schoolComponents/SchoolDetails";
 import Loading from "../components/Loading";
 
+// Define the structure of the data used in the component
 interface Schools {
   id: string;
   name: string;
@@ -49,6 +49,7 @@ interface Collections {
 }
 
 const Schools = () => {
+  // Define state variables
   const [schools, setSchools] = useState<Schools[]>();
   const [invoices, setInvoices] = useState<Invoices[]>();
   const [collections, setCollections] = useState<Collections[]>();
@@ -60,10 +61,12 @@ const Schools = () => {
   const [filteredCollections, setFilteredCollections] =
     useState<Collections[]>();
 
+  // Fetch the list of schools when the component mounts
   useEffect(() => {
     getSchools();
   }, []);
 
+  // Fetch the list of schools from the server
   const getSchools = async () => {
     setLoading(true);
     const response = await fetch("http://localhost:3000/schools");
@@ -73,6 +76,7 @@ const Schools = () => {
     setLoading(false);
   };
 
+  // Fetch invoices and collections for a specific school
   const getSchoolData = async (schoolId: string) => {
     setLoading(true);
     const response = await fetch(`http://localhost:3000/invoices`);
@@ -96,6 +100,7 @@ const Schools = () => {
     setLoading(false);
   };
 
+  // Fetch all invoices and collections and filter them based on the selected school
   const fetchData = async () => {
     setLoading(true);
     const response = await fetch(`http://localhost:3000/invoices`);
@@ -122,12 +127,14 @@ const Schools = () => {
     setLoading(false);
   };
 
+  // View details for a selected school
   const viewSchoolDetails = (school: Schools) => {
     setSelectedSchool(school);
     getSchoolData(school.id);
     setShowDetails(true);
   };
 
+  // Add filter to the invoices or collections based on the current view
   const addFilter = (filter: string) => {
     let data;
     let filteredData;
@@ -150,6 +157,7 @@ const Schools = () => {
 
   const [invoiceForm, showInvoiceForm] = useState<boolean>(false);
 
+  // Save a new invoice to the server
   const saveInvoice = async (newInvoice: Invoices) => {
     const response = await fetch("http://localhost:3000/invoices", {
       method: "POST",
@@ -167,10 +175,12 @@ const Schools = () => {
     }
   };
 
+  // Generate a random invoice number
   const generateNumber = () => {
     return Math.floor(Math.random() * 1000000).toString();
   };
 
+  // Handle invoice creation form submission
   const InvoiceCreation = async (e: React.FormEvent<HTMLFormElement>) => {
     if (!selectedSchool) return;
     e.preventDefault();
@@ -207,6 +217,7 @@ const Schools = () => {
 
   const [paymentForm, showPaymentForm] = useState<boolean>(false);
 
+  // Save a new payment to the server
   const savePayment = async (newPayment: Collections) => {
     const response = await fetch("http://localhost:3000/collections", {
       method: "POST",
@@ -224,6 +235,7 @@ const Schools = () => {
     }
   };
 
+  // Update an existing invoice on the server
   const updateInvoice = async (invoice: Invoices) => {
     const response = await fetch(
       `http://localhost:3000/invoices/${invoice.id}`,
@@ -244,6 +256,7 @@ const Schools = () => {
     }
   };
 
+  // Handle payment creation form submission
   const PaymentCreation = async (e: React.FormEvent<HTMLFormElement>) => {
     if (!selectedSchool) return;
     e.preventDefault();
@@ -273,6 +286,7 @@ const Schools = () => {
     savePayment(newPayment);
   };
 
+  // Mark a collection as valid
   const markValid = async (collection: Collections) => {
     collection.status = "Valid";
     const response = await fetch(
@@ -294,6 +308,7 @@ const Schools = () => {
     }
   };
 
+  // Mark a collection as bounced
   const markBounced = async (collection: Collections) => {
     collection.status = "Bounced";
     const response = await fetch(
@@ -315,6 +330,7 @@ const Schools = () => {
     }
   };
 
+  // Delete an invoice
   const deleteInvoice = async (invoice: Invoices) => {
     if (window.confirm("Are you sure you want to delete this invoice?")) {
       const response = await fetch(

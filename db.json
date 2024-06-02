@@ -55,6 +55,13 @@
       "date": "2024-06-02",
       "amount": 3000,
       "status": "Paid"
+    },
+    {
+      "id": "337919",
+      "schoolId": "4",
+      "date": "2024-06-02",
+      "amount": 3200,
+      "status": "Paid"
     }
   ],
   "signups": [
@@ -129,21 +136,6 @@
       "product": "Zeraki Timetable",
       "amount": 12000,
       "id": "7f63"
-    },
-    {
-      "product": "Zeraki Analytics",
-      "amount": 16000,
-      "id": "8a21"
-    },
-    {
-      "product": "Zeraki Finance",
-      "amount": 11000,
-      "id": "4456"
-    },
-    {
-      "product": "Zeraki Timetable",
-      "amount": 13000,
-      "id": "8f72"
     }
   ],
   "bouncedCheques": [
@@ -350,9 +342,9 @@
       "creationDate": "2024-05-01",
       "dueDate": "2024-07-01",
       "amount": 3200,
-      "paidAmount": 0,
-      "balance": 3200,
-      "status": "Pending"
+      "paidAmount": 3200,
+      "balance": 0,
+      "status": "Completed"
     },
     {
       "id": "5",

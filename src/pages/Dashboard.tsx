@@ -9,12 +9,14 @@ import Collections from "../dashBoardComponents/Collections";
 import MetricsTab from "../dashBoardComponents/Metrics";
 import Loading from "../components/Loading";
 
+// Define interfaces for various data structures used in the dashboard
 interface Metrics {
   colletions: number;
   total_signups: number;
   revenue: Revenue[];
   bounced_checks: number;
 }
+
 interface Revenue {
   product: string;
   amount: number;
@@ -39,6 +41,7 @@ interface Invoice {
   balance: number;
   status: string;
 }
+
 interface Collection {
   id: string;
   schoolId: string;
@@ -46,6 +49,7 @@ interface Collection {
   amount: number;
   status: string;
 }
+
 interface SignUpOverview {
   "Zeraki Analytics": { Primary: number; Secondary: number; IGCSE: number };
   "Zeraki Finance": { Primary: number; Secondary: number; IGCSE: number };
@@ -53,6 +57,7 @@ interface SignUpOverview {
 }
 
 const Dashboard = () => {
+  // Define state variables for the dashboard
   const [metrics, setMetrics] = useState<Metrics>();
   const [targets, setTargets] = useState<Targets>();
   const [collections, setCollections] = useState<Collection[]>();
@@ -62,6 +67,7 @@ const Dashboard = () => {
   const [currentItem, setCurrentItem] = useState<string>("metrics");
   const [active, setActive] = useState<number | undefined>(undefined);
 
+  // Function to fetch metrics data from the server
   const getMetrics = async () => {
     setLoading(true);
     const response1 = await fetch("http://localhost:3000/collections");
@@ -86,6 +92,7 @@ const Dashboard = () => {
     setLoading(false);
   };
 
+  // Generic function to fetch different types of data based on the item parameter
   const getData = async (item: string) => {
     setLoading(true);
     const response = await fetch(`http://localhost:3000/${item}`);
@@ -120,6 +127,7 @@ const Dashboard = () => {
     setLoading(false);
   };
 
+  // Function to fetch targets data from the server
   const getTargets = async () => {
     setLoading(true);
     const response = await fetch("http://localhost:3000/targets");
@@ -129,6 +137,7 @@ const Dashboard = () => {
     setLoading(false);
   };
 
+  // useEffect hook to fetch data based on the current item selected
   useEffect(() => {
     switch (currentItem) {
       case "metrics":
@@ -156,6 +165,7 @@ const Dashboard = () => {
     }
   }, [currentItem]);
 
+  // Navigation items for the dashboard
   const NavItems = [
     { label: "Metrics OverView", onClick: getMetrics },
     { label: "Targets", onClick: getTargets },
@@ -180,7 +190,6 @@ const Dashboard = () => {
           {currentItem === "signupsOverview" && signUps && (
             <SignUpChart signUps={signUps} />
           )}
-
           {currentItem === "invoices" && invoices && (
             <UpcomingInvoices invoices={invoices} />
           )}
