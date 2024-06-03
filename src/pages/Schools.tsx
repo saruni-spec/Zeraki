@@ -497,3 +497,190 @@ const Schools = () => {
 };
 
 export default Schools;
+
+/*When using local host and a json server
+
+ // Fetch the list of schools from the server
+  const getSchools = async () => {
+    setLoading(true);
+    const response = await fetch("http://localhost:3000/schools");
+    const data = await response.json();
+    setSchools(data);
+    setCurrentItem("schools");
+    setLoading(false);
+  };
+
+  // Fetch invoices and collections for a specific school
+  const getSchoolData = async (schoolId: string) => {
+    setLoading(true);
+    const response = await fetch(`http://localhost:3000/invoices`);
+    const response2 = await fetch(`http://localhost:3000/collections`);
+
+    const allInvoices = await response.json();
+    const allCollections = await response2.json();
+
+    const schoolInvoices = allInvoices.filter(
+      (invoice: Invoices) => invoice.schoolId === schoolId
+    );
+    const schoolCollections = allCollections.filter(
+      (collection: Collections) => collection.schoolId === schoolId
+    );
+
+    setInvoices(schoolInvoices);
+    setFilteredInvoices(schoolInvoices);
+    setFilteredCollections(schoolCollections);
+    setCollections(schoolCollections);
+
+    setLoading(false);
+  };
+
+  // Fetch all invoices and collections and filter them based on the selected school
+  const fetchData = async () => {
+    setLoading(true);
+    const response = await fetch(`http://localhost:3000/invoices`);
+    const response2 = await fetch(`http://localhost:3000/collections`);
+
+    const allInvoices = await response.json();
+    const allCollections = await response2.json();
+
+    if (selectedSchool) {
+      const schoolId = selectedSchool.id;
+      const schoolInvoices = allInvoices.filter(
+        (invoice: Invoices) => invoice.schoolId === schoolId
+      );
+      const schoolCollections = allCollections.filter(
+        (collection: Collections) => collection.schoolId === schoolId
+      );
+
+      setInvoices(schoolInvoices);
+      setFilteredInvoices(schoolInvoices);
+      setFilteredCollections(schoolCollections);
+      setCollections(schoolCollections);
+    }
+
+    setLoading(false);
+
+  };
+
+   // Save a new invoice to the server
+  const saveInvoice = async (newInvoice: Invoices) => {
+    const response = await fetch("http://localhost:3000/invoices", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newInvoice),
+    });
+
+    if (response.ok) {
+      alert("Invoice saved successfully");
+      fetchData();
+    } else {
+      alert("Error saving invoice");
+    }
+  };
+
+
+  // Save a new payment to the server
+  const savePayment = async (newPayment: Collections) => {
+    const response = await fetch("http://localhost:3000/collections", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newPayment),
+    });
+
+    if (response.ok) {
+      alert("Payment saved successfully");
+      fetchData();
+    } else {
+      alert("Error saving payment");
+    }
+  };
+
+  // Update an existing invoice on the server
+  const updateInvoice = async (invoice: Invoices) => {
+    const response = await fetch(
+      `http://localhost:3000/invoices/${invoice.id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(invoice),
+      }
+    );
+
+    if (response.ok) {
+      alert("Invoice updated successfully");
+      fetchData();
+    } else {
+      alert("Error updating invoice");
+    }
+  };
+
+  // Mark a collection as valid
+  const markValid = async (collection: Collections) => {
+    collection.status = "Valid";
+    const response = await fetch(
+      `http://localhost:3000/collections/${collection.id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(collection),
+      }
+    );
+
+    if (response.ok) {
+      alert("Collection updated successfully");
+      fetchData();
+    } else {
+      alert("Error updating collection");
+    }
+  };
+
+  // Mark a collection as bounced
+  const markBounced = async (collection: Collections) => {
+    collection.status = "Bounced";
+    const response = await fetch(
+      `http://localhost:3000/collections/${collection.id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(collection),
+      }
+    );
+
+    if (response.ok) {
+      alert("Collection updated successfully");
+      fetchData();
+    } else {
+      alert("Error updating collection");
+    }
+  };
+
+  // Delete an invoice
+  const deleteInvoice = async (invoice: Invoices) => {
+    if (window.confirm("Are you sure you want to delete this invoice?")) {
+      const response = await fetch(
+        `http://localhost:3000/invoices/${invoice.id}`,
+        {
+          method: "DELETE",
+        }
+      );
+
+      if (response.status === 200) {
+        alert("Invoice deleted successfully");
+        fetchData();
+      } else {
+        alert("Error deleting invoice");
+      }
+    }
+  };
+
+*/

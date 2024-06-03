@@ -231,9 +231,11 @@ The design decisions for the Zeraki Sales Agent Dashboard are driven by the need
 
 ### On WEBSITE https://main--zeraki-saruni.netlify.app/
 
-- **All Data**: `https://json-s.netlify.app`
+- **All Data**: `https://json-s.netlify.app/db/json`
   The API is hosted on netlify as a static API.
   Only rad operations function.
+
+  ### The Mock Data is available in the root dir,db.json file
 
 ### Key Functions
 

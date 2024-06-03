@@ -206,3 +206,78 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
+/*  When USing local host and json server
+
+ // Function to fetch metrics data from the server
+  const getMetrics = async () => {
+    setLoading(true);
+    const response1 = await fetch("http://localhost:3000/collections");
+    const response2 = await fetch("http://localhost:3000/signups");
+    const response3 = await fetch("http://localhost:3000/revenue");
+    const response4 = await fetch("http://localhost:3000/bouncedCheques");
+
+    const collections = await response1.json();
+    const signups = await response2.json();
+    const revenue = await response3.json();
+    const bouncedCheques = await response4.json();
+
+    console.log(collections);
+
+    setMetrics({
+      colletions: collections.length,
+      total_signups: signups.length,
+      revenue: revenue,
+      bounced_checks: bouncedCheques.length,
+    });
+    setCurrentItem("metrics");
+    setLoading(false);
+  };
+
+  // Generic function to fetch different types of data based on the item parameter
+  const getData = async (item: string) => {
+    setLoading(true);
+    const response = await fetch(`http://localhost:3000/${item}`);
+    const data = await response.json();
+    switch (item) {
+      case "metrics":
+        setMetrics(data);
+        break;
+      case "invoices": {
+        const allInvoices = data;
+        const UpcomingInvoices = allInvoices.filter(
+          (invoice: Invoice) => invoice.status !== "Completed"
+        );
+
+        const sortedInvoices = [...UpcomingInvoices].sort(
+          (a, b) =>
+            new Date(b.dueDate).getTime() - new Date(a.dueDate).getTime()
+        );
+        setInvoices(sortedInvoices);
+        break;
+      }
+      case "collections":
+        setCollections(data);
+        break;
+      case "signupsOverview":
+        setSignUps(data);
+        break;
+      default:
+        console.log("Invalid item");
+    }
+    setCurrentItem(item);
+    setLoading(false);
+  };
+
+  // Function to fetch targets data from the server
+  const getTargets = async () => {
+    setLoading(true);
+    const response = await fetch("http://localhost:3000/targets");
+    const data = await response.json();
+    setTargets(data);
+    setCurrentItem("targets");
+    setLoading(false);
+  };
+
+
+*/
