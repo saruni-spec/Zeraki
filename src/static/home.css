@@ -83,3 +83,51 @@
 .noTextButton p{
     display: none;
 }
+
+@media screen and (max-width:800px){
+    #home {
+        
+        width: 180vw;
+     
+        left: -88%;
+        overflow: hidden;
+       
+      }
+      
+
+      .shift-left {
+        transform: translateX(35%); /* Adjust the value to control the shift distance */
+        
+      }
+    #division{
+       
+        width: 1.5%;
+       
+    }
+    #main{
+        
+      height: 100vh;
+    }
+    
+    #sideNav{
+       
+        width: 90%;
+    }
+       
+    #SideNavMenu{
+        
+        top: 0.5%;
+        left: 58%;
+   
+        
+    }
+    
+    #landingSideNav{
+        
+        top: 0.5%;
+        left: 58%;
+      
+    }
+
+    
+}

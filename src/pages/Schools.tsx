@@ -270,7 +270,7 @@ const Schools = () => {
     const amount = parseInt(form.amount.value);
     const schoolId = selectedSchool?.id;
     const id = generateNumber().toString();
-    const status = "Paid";
+    const status = "Valid";
 
     const newPayment = {
       id,

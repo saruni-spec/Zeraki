@@ -6,3 +6,8 @@
     margin-top: 10%;
 
 }
+@media screen and (max-width:800px) {
+    #homeDiv{
+        justify-content: space-evenly;
+    }
+}
